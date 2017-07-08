@@ -11,13 +11,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="7dp">
+        android:padding="13dp">
 
         <TextView
             android:id="@+id/rasp_tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="1"
             android:text="DefaultName"
             android:textColor="@color/md_black_1000"
             android:textSize="16dp"
@@ -29,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/rasp_tv_name"
             android:maxLines="1"
+            android:paddingTop="3dp"
             android:text="9 июля 9999, 19-00"
             android:textColor="@color/md_black_1000"
             android:textSize="16dp" />
@@ -42,7 +42,8 @@
             android:layout_centerHorizontal="true"
             android:maxLines="1"
             android:text="9 часов"
-            android:textColor="@color/md_black_1000" />
+            android:textColor="@color/md_black_1000"
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/rasp_tv_teacher"
@@ -50,14 +51,18 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/rasp_tv_time"
             android:text="Default teacher"
-            android:textColor="@color/md_black_1000" />
+            android:paddingTop="3dp"
+            android:textColor="@color/md_black_1000"
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/rasp_tv_place"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/rasp_tv_teacher"
+            android:paddingTop="3dp"
             android:text="Default place"
-            android:textColor="@color/md_black_1000" />
+            android:textColor="@color/md_black_1000"
+            android:textSize="16dp" />
     </RelativeLayout>
 </android.support.v7.widget.CardView>

@@ -18,6 +18,7 @@ import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -37,11 +38,14 @@ public class NewsFragment extends Fragment {
         if(iterator.hasNext()) {
             initRasp(layout, iterator.next());
         }
-
-        initCountDown(layout);
         return layout;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initCountDown(view);
+    }
 
     private void initRasp(View layout, Subject subject){
         SimpleDateFormat format = new SimpleDateFormat("dd MMM - hh:mm");
@@ -54,10 +58,14 @@ public class NewsFragment extends Fragment {
 
     private void initCountDown(View layout){
         final TextView tv = ((TextView) layout.findViewById(R.id.deadline_time));
-        new CountDownTimer(30000, 1000) {
+        Calendar end = Calendar.getInstance();
+        long start = end.getTimeInMillis();
+        end.set(2017, 7, 9, 23, 45);
+        long duration = end.getTimeInMillis() - start;
+        new CountDownTimer(duration, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                tv.setText("seconds remaining: " + millisUntilFinished / 1000);
+                tv.setText("Осталось: " + millisUntilFinished / 1000 / 60 / 60 + " часов " + millisUntilFinished / 1000 / 60 % 60 + " минут " + millisUntilFinished / 1000 % 60 + " секунд ");
             }
 
             public void onFinish() {

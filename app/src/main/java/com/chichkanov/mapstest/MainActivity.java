@@ -1,5 +1,6 @@
 package com.chichkanov.mapstest;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity
 
     private static final int NEWS_ID = 0;
     private static final int PLACES_ID = 1;
+    private static final int SWITCH_ID = 2;
     private static final String DRAWER_SELECTED = "selected_drawer_item";
 
     private String[] mMenuTitles;
@@ -54,6 +56,15 @@ public class MainActivity extends AppCompatActivity
                 .withIconTintingEnabled(true)
                 .withName(R.string.places);
 
+        PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(SWITCH_ID)
+                .withIconColorRes(R.color.dark)
+                .withTextColorRes(R.color.dark)
+                .withIcon(R.drawable.ic_location)
+                .withSelectedTextColor(Color.BLACK)
+                .withSelectedIconColor(Color.BLACK)
+                .withIconTintingEnabled(true)
+                .withName(R.string.switchSchool);
+
         drawer = new DrawerBuilder()
                 .withActivity(this)
                 .withRootView(R.id.drawer_layout)
@@ -61,7 +72,7 @@ public class MainActivity extends AppCompatActivity
                 .withDrawerWidthDp(300)
                 .withActionBarDrawerToggle(true)
                 .withActionBarDrawerToggleAnimated(true)
-                .addDrawerItems(item1, item2)
+                .addDrawerItems(item1, item2, item3)
                 .withOnDrawerNavigationListener(new Drawer.OnDrawerNavigationListener() {
                     @Override
                     public boolean onNavigationClickListener(View clickedView) {
@@ -114,6 +125,11 @@ public class MainActivity extends AppCompatActivity
                 replaceFragment(new MapsFragment(), MapsFragment.class.getSimpleName(), true);
                 setTitle(mMenuTitles[position]);
                 drawer.closeDrawer();
+                return true;
+
+            case SWITCH_ID:
+                finish();
+                startActivity(new Intent(this, PickSchoolNameActivity.class));
                 return true;
         }
         return false;

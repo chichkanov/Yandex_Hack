@@ -9,6 +9,8 @@
     <string name="show_list">Показать список</string>
     <string name="news">Новости</string>
     <string name="places">Места</string>
+    <string name="switchSchool">Сменить школу</string>
+
 
     <string name="design_school_name">Школа дизайна</string>
     <string name="interfaces_school_name">Школа разработки интерфейсов</string>
