@@ -1,9 +1,11 @@
 package com.chichkanov.mapstest.model;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 
-import com.chichkanov.mapstest.model.parsing.StorageFactory;
+import com.chichkanov.mapstest.model.parsing.StorageParser;
 
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -13,35 +15,55 @@ public class Storage implements IStorage {
 
     private static IStorage singleton;
 
-    static IStorage getInstance(Context context) {
+    public static IStorage getInstance(Context context) {
         if(singleton == null) {
-            singleton = StorageFactory.get(context);
+            singleton = new Storage(StorageParser.get(context));
         }
 
         return singleton;
     }
 
-    Storage(HashMap<String, Place> placesByCategory) {
-        this.placesByCategory = placesByCategory;
-        this.categories = new ArrayList<>(placesByCategory.keySet());
+    public static void setInstance(@NonNull Reader in) {
+        singleton = new Storage(StorageParser.parse(in));
     }
 
+    private Storage(StorageParser parser) {
+        this.placesByCategory = parser.placeHashMap;
+        int capacity = 0;
+        for (List<Place> ps : parser.placeHashMap.values()) {
+            capacity += ps.size();
+        }
 
-    private ArrayList<String> categories;
-    private HashMap<String, Place> placesByCategory;
+        this.places = new ArrayList<>(capacity);
+        for (List<Place> ps : parser.placeHashMap.values()) {
+            this.places.addAll(ps);
+        }
+    }
+
+    private ArrayList<Place> places;
+    private HashMap<String, List<Place>> placesByCategory;
 
     @Override
-    public ArrayList<String> getCategories() {
-        return categories;
+    public String[] getCategories() {
+        return placesByCategory.keySet().toArray(new String[0]);
     }
 
     @Override
-    public Collection<Place> getPlaces() {
-        return placesByCategory.values();
+    public List<Place> getPlaces() {
+        return places;
     }
 
     @Override
-    public Collection<Place> getPlacesWithCategories(List<String> categories) {
-        return placesByCategory.values();
+    public List<Place> getPlacesWithCategories(List<String> categories) {
+        final ArrayList<Place> places = new ArrayList<>();
+        for (String category : categories) {
+            places.addAll(placesByCategory.get(category));
+        }
+        return places;
+    }
+
+    @Override
+    public Collection<Subject> getNearestSchedule(String date, String schoolName) {
+        return null;
     }
 }
