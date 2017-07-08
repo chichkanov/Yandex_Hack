@@ -9,11 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.chichkanov.mapstest.model.Storage;
 import com.chichkanov.mapstest.model.Subject;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 /**
  * Created by chichkanov on 08.07.17.
@@ -25,14 +28,20 @@ public class NewsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_news, container, false);
-        initRasp(layout, new Subject(2.0, "Cambridge", new ArrayList<String>(), new ArrayList<String>(), "2 june 1991", "Разработка чего-то выфвыфв" ));
+
+        Collection<Subject> subjects = Storage.getInstance(getContext()).getNearestSchedule("shmd");
+        Iterator<Subject> iterator = subjects.iterator();
+        if(iterator.hasNext()) {
+            initRasp(layout, iterator.next());
+        }
+
         initCountDown(layout);
         return layout;
     }
 
     private void initRasp(View layout, Subject subject){
         ((TextView) layout.findViewById(R.id.rasp_tv_name)).setText(subject.getTitle());
-        ((TextView) layout.findViewById(R.id.rasp_tv_time)).setText(subject.getTime());
+        ((TextView) layout.findViewById(R.id.rasp_tv_time)).setText(subject.getTime().toString());
         ((TextView) layout.findViewById(R.id.rasp_tv_duration)).setText(String.valueOf(subject.getDuration()));
         ((TextView) layout.findViewById(R.id.rasp_tv_teacher)).setText("Test");
         ((TextView) layout.findViewById(R.id.rasp_tv_place)).setText(subject.getLocation());

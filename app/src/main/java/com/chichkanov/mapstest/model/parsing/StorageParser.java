@@ -5,9 +5,11 @@ import android.support.annotation.NonNull;
 
 import com.chichkanov.mapstest.R;
 import com.chichkanov.mapstest.model.Place;
+import com.chichkanov.mapstest.model.Subject;
 import com.chichkanov.mapstest.model.parsing.dto.CategoryDto;
 import com.chichkanov.mapstest.model.parsing.dto.FileDto;
 import com.chichkanov.mapstest.model.parsing.dto.PlaceDto;
+import com.chichkanov.mapstest.model.parsing.dto.ScheduleDto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
@@ -23,6 +25,7 @@ import java.util.List;
 public class StorageParser {
 
     public HashMap<String, List<Place>> placeHashMap = new HashMap<>();
+    public HashMap<String, List<Subject>> subjectHashMap = new HashMap<>();
 
     public static StorageParser parse(@NonNull Reader in) {
         JsonReader jsonReader = new JsonReader(in);
@@ -30,7 +33,6 @@ public class StorageParser {
         FileDto dto = null;
         try {
             Gson gson = new GsonBuilder()
-                    //.registerTypeHierarchyAdapter(Calendar.class, new CalendarJsonAdapter())
                     .create();
             dto = gson.fromJson(jsonReader, FileDto.class);
         } catch (Exception e) {
@@ -57,6 +59,17 @@ public class StorageParser {
             }
 
             parser.placeHashMap.put(cat.getName(), places);
+        }
+
+        for(ScheduleDto schedule : dto.getSchedule()) {
+            Subject subject = new Subject(schedule.getDuration(), schedule.getLocation(), schedule.getSchools(), schedule.getTeacher(), schedule.getTime(), schedule.getTitle());
+            for(String school : schedule.getSchools()) {
+                if(!parser.subjectHashMap.containsKey(school)) {
+                    parser.subjectHashMap.put(school, new ArrayList<Subject>());
+                }
+
+                parser.subjectHashMap.get(school).add(subject);
+            }
         }
 
         return parser;

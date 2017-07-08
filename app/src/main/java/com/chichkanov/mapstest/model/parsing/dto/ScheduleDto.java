@@ -1,5 +1,7 @@
 package com.chichkanov.mapstest.model.parsing.dto;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -9,6 +11,9 @@ import java.util.List;
  */
 
 public class ScheduleDto {
+
+    private final static SimpleDateFormat dateAndTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ssZ");
+
     float duration;
     String location;
     ArrayList<String> schools;
@@ -23,9 +28,17 @@ public class ScheduleDto {
         return title;
     }
 
-    //public Calendar getTime() {
-    //    return time;
-    //}
+    public Calendar getTime() {
+        Calendar d = Calendar.getInstance();
+
+        try {
+            d.setTimeInMillis(dateAndTime.parse(time).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return d;
+    }
 
     public List<String> getTeacher() {
         return teacher;
