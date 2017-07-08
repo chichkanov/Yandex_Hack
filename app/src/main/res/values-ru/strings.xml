@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Мобилизация</string>
+
     <string name="design_school_name">Школа дизайна</string>
     <string name="interfaces_school_name">Школа разработки интерфейсов</string>
     <string name="mobile_school_name">Школа мобильной разработки</string>
     <string name="managment_school_name">Школа менеджмента</string>
+
+    <plurals name="hour">
+        <item quantity="zero">%1$d часов</item>
+        <item quantity="one">%1$d час</item>
+        <item quantity="two">%1$d часа</item>
+        <item quantity="few">%1$d часов</item>
+        <item quantity="many">%1$d часов</item>
+        <item quantity="other">%1$d часов</item>
+    </plurals>
 </resources>

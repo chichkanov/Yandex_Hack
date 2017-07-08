@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity
             drawer.setSelection(savedInstanceState.getLong(DRAWER_SELECTED), false);
             onBackStackChanged();
         }
-
+        setTitle(mMenuTitles[0]);
         getSupportFragmentManager().addOnBackStackChangedListener(this);
     }
 
