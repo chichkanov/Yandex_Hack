@@ -1,130 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:background="@drawable/item_bg_card"
-    android:orientation="horizontal">
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true">
 
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_weight="1"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/rating_tv_sum"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:maxLines="1"
-            android:text="Общий" />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="0.7"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
-        <TextView
-            android:id="@+id/rating_tv_sum_value"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rating_tv_sum"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="0" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/rating_tv_sum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="Общий" />
 
-    <View
-        android:layout_width="1dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center_vertical"
-        android:background="#E0E0E0" />
+            <TextView
+                android:id="@+id/rating_tv_sum_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rating_tv_sum"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="0" />
+        </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_weight="1"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        <View
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="#E0E0E0" />
 
-        <TextView
-            android:id="@+id/rating_tv_skill"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:maxLines="1"
-            android:text="Скилл" />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="0.7"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
-        <TextView
-            android:id="@+id/rating_tv_skill_value"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rating_tv_skill"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="0" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/rating_tv_skill"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="Скилл" />
 
-    <View
-        android:layout_width="1dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center_vertical"
-        android:background="#E0E0E0" />
+            <TextView
+                android:id="@+id/rating_tv_skill_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rating_tv_skill"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="0" />
+        </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_weight="1"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        <View
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="#E0E0E0" />
 
-        <TextView
-            android:id="@+id/rating_tv_resp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:maxLines="1"
-            android:text="Ответственность" />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
-        <TextView
-            android:id="@+id/rating_tv_resp_value"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rating_tv_resp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="0" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/rating_tv_resp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="Ответственность" />
 
-    <View
-        android:layout_width="1dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center_vertical"
-        android:background="#E0E0E0" />
+            <TextView
+                android:id="@+id/rating_tv_resp_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rating_tv_resp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="0" />
+        </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_weight="1"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        <View
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="#E0E0E0" />
 
-        <TextView
-            android:id="@+id/rating_tv_visit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:maxLines="1"
-            android:text="Посещаемость" />
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
-        <TextView
-            android:id="@+id/rating_tv_visit_value"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rating_tv_visit"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="0" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/rating_tv_visit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="Посещаемость" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/rating_tv_visit_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rating_tv_visit"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="0" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

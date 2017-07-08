@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/rating_tv_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Рейтинг"
+        android:textSize="20sp" />
+
+    <include
+        android:id="@+id/view_rating"
+        layout="@layout/view_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rating_tv_info" />
+
+    <TextView
+        android:id="@+id/rating_tv_rasp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_rating"
+        android:layout_margin="10dp"
+        android:text="Ближайшие занятия"
+        android:textSize="20sp" />
 </RelativeLayout>
