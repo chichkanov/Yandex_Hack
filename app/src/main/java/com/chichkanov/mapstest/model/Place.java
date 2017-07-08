@@ -8,8 +8,12 @@ public class Place {
     private String name;
     private String category;
 
-    Place(String description, float lat, float lon, String name, String category) {
-
+    public Place(String description, float lat, float lon, String name, String category) {
+        this.description = description;
+        this.lat = lat;
+        this.lon = lon;
+        this.name = name;
+        this.category = category;
     }
 
     public String getDescription() {
