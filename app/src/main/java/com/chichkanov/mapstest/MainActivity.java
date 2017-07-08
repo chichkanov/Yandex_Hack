@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.mikepenz.materialdrawer.Drawer;
@@ -16,8 +17,8 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 public class MainActivity extends AppCompatActivity
         implements Drawer.OnDrawerItemClickListener, FragmentManager.OnBackStackChangedListener {
 
-    private static final long NEWS_ID = 0;
-    private static final long PLACES_ID = 1;
+    private static final int NEWS_ID = 0;
+    private static final int PLACES_ID = 1;
     private static final String DRAWER_SELECTED = "selected_drawer_item";
 
     private Drawer drawer;
@@ -27,8 +28,11 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         DrawerBuilder drawerBuilder = new DrawerBuilder().withActivity(this)
-                //.withToolbar(toolbar)
+                .withToolbar(toolbar)
                 .withOnDrawerNavigationListener(new Drawer.OnDrawerNavigationListener() {
                     @Override
                     public boolean onNavigationClickListener(View clickedView) {
@@ -75,14 +79,25 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    public void onBackPressed() {
+        if (drawer != null && drawer.isDrawerOpen()) {
+            drawer.closeDrawer();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-        switch (drawerItem.getIdentifier()) {
+        switch ((int)drawerItem.getIdentifier()) {
             case NEWS_ID:
                 replaceFragment(new NewsFragment(), NewsFragment.class.getSimpleName(), true);
+                drawer.closeDrawer();
                 return true;
 
             case PLACES_ID:
                 replaceFragment(new MapsFragment(), MapsFragment.class.getSimpleName(), true);
+                drawer.closeDrawer();
                 return true;
         }
         return false;
