@@ -12,19 +12,18 @@ import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.chichkanov.mapstest.model.Place;
@@ -40,12 +39,9 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,7 +61,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
     private RecyclerView mRecyclerPlaces;
     private PlacesAdapter mAdapter;
     private ImageButton mBtnFilter;
-    private EditText mTxtSearch;
+    private EditText mEditSearch;
     private Button mBtnShowList;
     private BottomSheetBehavior mBottomSheetBehavior;
 
@@ -82,11 +78,10 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        mTxtSearch = (EditText) layout.findViewById(R.id.txt_search);
-
         initPlacesList(layout);
         initFilterButton(layout);
         initBottomSheet(layout);
+        initSearch(layout);
 
         return layout;
     }
@@ -175,6 +170,26 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
         });
     }
 
+    private void initSearch(View layout) {
+        mEditSearch = (EditText) layout.findViewById(R.id.txt_search);
+        mEditSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                updateMarkers();
+            }
+        });
+    }
+
     private void moveCameraToPlace(Place place) {
         LatLng latLng = new LatLng(place.getLat(), place.getLon());
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -186,7 +201,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
         for(Map.Entry<String, Boolean> entry : mCurrentCategories.entrySet()) {
             if(entry.getValue()) searchCategories.add(entry.getKey());
         }
-        List<Place> data = Storage.getInstance(getActivity().getApplicationContext()).getPlacesWithCategories(searchCategories);
+        List<Place> data = Storage.getInstance(getActivity().getApplicationContext()).getPlacesWithCategories(searchCategories, mEditSearch.getText().toString());
         mAdapter.updateData(data);
 
         mMap.clear();
@@ -233,10 +248,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-
-        if (mGoogleApiClient != null) {
-            LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
-        }
     }
 
     @Override
