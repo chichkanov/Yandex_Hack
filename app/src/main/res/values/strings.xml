@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">MapsTest</string>
     <string name="title_activity_maps">Map</string>
+
+    <string name="search_places_hint">Search…</string>
+    <string name="choose_categories">Choose categories</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="show_list">Show list</string>
 </resources>
