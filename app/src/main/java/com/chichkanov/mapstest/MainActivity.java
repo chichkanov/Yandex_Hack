@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity
         PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(SWITCH_ID)
                 .withIconColorRes(R.color.dark)
                 .withTextColorRes(R.color.dark)
-                .withIcon(R.drawable.ic_location)
+                .withIcon(R.drawable.ic_arrows)
                 .withSelectedTextColor(Color.BLACK)
                 .withSelectedIconColor(Color.BLACK)
                 .withIconTintingEnabled(true)
