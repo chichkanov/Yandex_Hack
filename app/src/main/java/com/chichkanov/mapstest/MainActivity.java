@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity
                 .withIconTintingEnabled(true)
                 .withName("Места");
 
-        new DrawerBuilder()
+        drawer = new DrawerBuilder()
                 .withActivity(this)
                 .withRootView(R.id.drawer_layout)
                 .withToolbar(toolbar)

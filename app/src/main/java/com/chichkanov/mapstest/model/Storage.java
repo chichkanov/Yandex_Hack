@@ -63,7 +63,7 @@ public class Storage implements IStorage {
     }
 
     @Override
-    public Collection<Subject> getNearestSchedule(String date, String schoolName) {
+    public Collection<Subject> getNearestSchedule( String schoolName) {
         return null;
     }
 }
