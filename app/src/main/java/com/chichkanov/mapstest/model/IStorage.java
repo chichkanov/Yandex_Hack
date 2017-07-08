@@ -1,11 +1,12 @@
 package com.chichkanov.mapstest.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public interface IStorage {
 
-    String[] getCategories();
+    ArrayList<String> getCategories();
 
     Collection<Place> getPlaces();
 

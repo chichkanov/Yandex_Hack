@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.chichkanov.mapstest.model.parsing.StorageFactory;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -22,13 +23,16 @@ public class Storage implements IStorage {
 
     Storage(HashMap<String, Place> placesByCategory) {
         this.placesByCategory = placesByCategory;
+        this.categories = new ArrayList<>(placesByCategory.keySet());
     }
 
+
+    private ArrayList<String> categories;
     private HashMap<String, Place> placesByCategory;
 
     @Override
-    public String[] getCategories() {
-        return placesByCategory.keySet().toArray(new String[0]);
+    public ArrayList<String> getCategories() {
+        return categories;
     }
 
     @Override
