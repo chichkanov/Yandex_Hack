@@ -2,6 +2,14 @@
 <resources>
     <string name="app_name">Мобилизация</string>
 
+    <string name="search_places_hint">Искать…</string>
+    <string name="choose_categories">Выберите категории</string>
+    <string name="ok">ОК</string>
+    <string name="cancel">Отмена</string>
+    <string name="show_list">Показать список</string>
+    <string name="news">Новости</string>
+    <string name="places">Места</string>
+
     <string name="design_school_name">Школа дизайна</string>
     <string name="interfaces_school_name">Школа разработки интерфейсов</string>
     <string name="mobile_school_name">Школа мобильной разработки</string>

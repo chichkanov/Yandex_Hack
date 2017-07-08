@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity
                 .withSelectedTextColor(Color.BLACK)
                 .withSelectedIconColor(Color.BLACK)
                 .withIconTintingEnabled(true)
-                .withName("Новости");
+                .withName(R.string.news);
 
         PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(PLACES_ID)
                 .withIconColorRes(R.color.dark)
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity
                 .withSelectedTextColor(Color.BLACK)
                 .withSelectedIconColor(Color.BLACK)
                 .withIconTintingEnabled(true)
-                .withName("Места");
+                .withName(R.string.places);
 
         drawer = new DrawerBuilder()
                 .withActivity(this)

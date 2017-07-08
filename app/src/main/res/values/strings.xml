@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">Mobilization</string>
-    <string name="title_activity_maps">Карта</string>
 
     <string name="search_places_hint">Search…</string>
     <string name="choose_categories">Choose categories</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="show_list">Show list</string>
+    <string name="news">News</string>
+    <string name="places">Places</string>
 
     <string name="design_school_name">Design school</string>
     <string name="interfaces_school_name">Interfaces Development school</string>
