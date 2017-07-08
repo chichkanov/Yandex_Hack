@@ -67,8 +67,7 @@ public class Storage implements IStorage {
     }
 
     private static boolean match(String pattern, Place place) {
-        return place.getName().toLowerCase().contains(pattern)
-            || place.getDescription().toLowerCase().contains(pattern);
+        return place.getName().toLowerCase().contains(pattern);
     }
 
     @Override
