@@ -11,6 +11,7 @@ public interface IStorage {
 
     List<Place> getPlacesWithCategories(List<String> categories);
 
-    Collection<Subject> getNearestSchedule(String date, String schoolName);
+    List<Place> getPlacesWithCategories(List<String> categories, String textSearch);
 
+    Collection<Subject> getNearestSchedule(String schoolName);
 }

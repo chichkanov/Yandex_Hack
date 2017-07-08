@@ -7,6 +7,7 @@ import com.chichkanov.mapstest.model.parsing.StorageParser;
 
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +30,8 @@ public class Storage implements IStorage {
 
     private Storage(StorageParser parser) {
         this.placesByCategory = parser.placeHashMap;
+        this.schedulesBySchool = parser.subjectHashMap;
+
         int capacity = 0;
         for (List<Place> ps : parser.placeHashMap.values()) {
             capacity += ps.size();
@@ -42,6 +45,7 @@ public class Storage implements IStorage {
 
     private ArrayList<Place> places;
     private HashMap<String, List<Place>> placesByCategory;
+    private HashMap<String, List<Subject>> schedulesBySchool;
 
     @Override
     public String[] getCategories() {
@@ -62,8 +66,44 @@ public class Storage implements IStorage {
         return places;
     }
 
+    private static boolean match(String pattern, Place place) {
+        return place.getName().toLowerCase().contains(pattern)
+            || place.getDescription().toLowerCase().contains(pattern);
+    }
+
     @Override
-    public Collection<Subject> getNearestSchedule(String date, String schoolName) {
-        return null;
+    public List<Place> getPlacesWithCategories(List<String> categories, @NonNull String textSearch) {
+        if(textSearch.isEmpty()) {
+            return getPlacesWithCategories(categories);
+        }
+
+        String pattern = textSearch.toLowerCase();
+        final ArrayList<Place> places = new ArrayList<>();
+        for (String category : categories) {
+            for(Place place : placesByCategory.get(category)) {
+                if(match(pattern, place)) {
+                    places.add(place);
+                }
+            }
+        }
+        return places;
+    }
+
+    @Override
+    public Collection<Subject> getNearestSchedule(String schoolName) {
+        ArrayList<Subject> subjects = new ArrayList<>();
+        List<Subject> list = schedulesBySchool.get(schoolName);
+        if (list == null) {
+            return subjects;
+        }
+
+        Calendar now = Calendar.getInstance();
+        for(Subject subject : list) {
+            if(subject.getTime().after(now)) {
+                subjects.add(subject);
+            }
+        }
+
+        return subjects;
     }
 }

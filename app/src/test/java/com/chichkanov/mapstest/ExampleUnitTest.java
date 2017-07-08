@@ -61,7 +61,7 @@ public class ExampleUnitTest {
                 "                \"\\u0440\\u044f\", \n" +
                 "                \"\\u041d\\u0440\"\n" +
                 "            ], \n" +
-                "            \"time\": \"2017-02-01 10:00:00+0300\", \n" +
+                "            \"time\": \"2118-02-01 10:00:00+0300\", \n" +
                 "            \"title\": \"\\u0442\"\n" +
                 "        }\n" +
                 "    ]\n" +
@@ -72,5 +72,7 @@ public class ExampleUnitTest {
 
         Assert.assertArrayEquals(s.getCategories(), new Object[]{ "Я" });
         Assert.assertEquals(s.getPlaces().size(), 1);
+        Assert.assertEquals(s.getNearestSchedule("sh1").size(), 1);
+        Assert.assertEquals(s.getNearestSchedule("").size(), 0);
     }
 }
