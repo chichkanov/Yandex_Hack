@@ -16,8 +16,8 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 public class MainActivity extends AppCompatActivity
         implements Drawer.OnDrawerItemClickListener, FragmentManager.OnBackStackChangedListener {
 
-    private static final long NEWS_ID = 0;
-    private static final long PLACES_ID = 1;
+    private static final int NEWS_ID = 0;
+    private static final int PLACES_ID = 1;
     private static final String DRAWER_SELECTED = "selected_drawer_item";
 
     private Drawer drawer;
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-        switch (drawerItem.getIdentifier()) {
+        switch ((int)drawerItem.getIdentifier()) {
             case NEWS_ID:
                 replaceFragment(new NewsFragment(), NewsFragment.class.getSimpleName(), true);
                 return true;
