@@ -5,4 +5,12 @@
     <string name="interfaces_school_name">Interfaces Development school</string>
     <string name="mobile_school_name">Mobile Development school</string>
     <string name="managment_school_name">Management school</string>
+
+    <string name="shared_preferences_name">shared_prefs</string>
+    <string name="pref_school_name">school_name</string>
+    <string name="pref_design_school">design</string>
+    <string name="pref_interfaces_school">interf</string>
+    <string name="pref_management_school">manag</string>
+    <string name="pref_development_school">dev</string>
+    <string name="pref_default_school">default</string>
 </resources>

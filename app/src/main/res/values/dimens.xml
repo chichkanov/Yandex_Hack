@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="pick_schoool_name_height_margin">50dp</dimen>
+    <dimen name="pick_school_button_margin">16dp</dimen>
+</resources>
