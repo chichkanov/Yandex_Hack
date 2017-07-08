@@ -32,18 +32,21 @@
 
         <activity android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".PickSchoolNameActivity"/>
+        <activity android:name=".PickSchoolNameActivity"
+            android:screenOrientation="portrait"/>
 
 
         <activity android:name=".SplashActivity"
-            android:theme="@style/SplashTheme">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/SplashTheme"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
     </application>
