@@ -28,6 +28,8 @@ import java.util.Iterator;
 
 public class NewsFragment extends Fragment {
 
+    private CountDownTimer countDownTimer;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -45,6 +47,14 @@ public class NewsFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initCountDown(view);
+        countDownTimer.start();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        countDownTimer.cancel();
+        countDownTimer = null;
     }
 
     private void initRasp(View layout, Subject subject){
@@ -60,9 +70,10 @@ public class NewsFragment extends Fragment {
         final TextView tv = ((TextView) layout.findViewById(R.id.deadline_time));
         Calendar end = Calendar.getInstance();
         long start = end.getTimeInMillis();
-        end.set(2017, 7, 9, 23, 45);
+        end.set(2017, 6, 9, 23, 45, 0);
         long duration = end.getTimeInMillis() - start;
-        new CountDownTimer(duration, 1000) {
+
+        countDownTimer = new CountDownTimer(duration, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 tv.setText("Осталось: " + millisUntilFinished / 1000 / 60 / 60 + " часов " + millisUntilFinished / 1000 / 60 % 60 + " минут " + millisUntilFinished / 1000 % 60 + " секунд ");
@@ -71,6 +82,6 @@ public class NewsFragment extends Fragment {
             public void onFinish() {
                 tv.setText("done!");
             }
-        }.start();
+        };
     }
 }
