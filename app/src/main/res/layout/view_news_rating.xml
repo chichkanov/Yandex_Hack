@@ -26,7 +26,8 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="Общий" />
+                android:text="Общий"
+                android:textColor="@color/md_black_1000" />
 
             <TextView
                 android:id="@+id/rating_tv_sum_value"
@@ -35,7 +36,8 @@
                 android:layout_below="@id/rating_tv_sum"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="0" />
+                android:text="0"
+                android:textColor="@color/md_black_1000" />
         </RelativeLayout>
 
         <View
@@ -58,7 +60,8 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="Скилл" />
+                android:text="Скилл"
+                android:textColor="@color/md_black_1000" />
 
             <TextView
                 android:id="@+id/rating_tv_skill_value"
@@ -67,7 +70,8 @@
                 android:layout_below="@id/rating_tv_skill"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="0" />
+                android:text="0"
+                android:textColor="@color/md_black_1000" />
         </RelativeLayout>
 
         <View
@@ -90,7 +94,8 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="Ответственность" />
+                android:text="Ответственность"
+                android:textColor="@color/md_black_1000" />
 
             <TextView
                 android:id="@+id/rating_tv_resp_value"
@@ -99,7 +104,8 @@
                 android:layout_below="@id/rating_tv_resp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="0" />
+                android:text="0"
+                android:textColor="@color/md_black_1000" />
         </RelativeLayout>
 
         <View
@@ -122,7 +128,8 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="Посещаемость" />
+                android:text="Посещаемость"
+                android:textColor="@color/md_black_1000" />
 
             <TextView
                 android:id="@+id/rating_tv_visit_value"
@@ -131,7 +138,8 @@
                 android:layout_below="@id/rating_tv_visit"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="0" />
+                android:text="0"
+                android:textColor="@color/md_black_1000" />
         </RelativeLayout>
 
     </LinearLayout>

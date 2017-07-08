@@ -7,6 +7,7 @@ import com.chichkanov.mapstest.model.parsing.StorageParser;
 
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -59,5 +60,10 @@ public class Storage implements IStorage {
             places.addAll(placesByCategory.get(category));
         }
         return places;
+    }
+
+    @Override
+    public Collection<Subject> getNearestSchedule(String date, String schoolName) {
+        return null;
     }
 }
