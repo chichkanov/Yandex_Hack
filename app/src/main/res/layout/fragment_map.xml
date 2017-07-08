@@ -18,7 +18,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/btn_show_list"
         android:text="@string/show_list"
+        android:textSize="16sp"
         android:visibility="invisible"
-        android:layout_gravity="bottom|center_horizontal"/>
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@drawable/bg_btn_search"
+        android:textAllCaps="false"
+        android:alpha="0.7"
+        android:layout_marginBottom="16dp"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
 
 </android.support.design.widget.CoordinatorLayout>
