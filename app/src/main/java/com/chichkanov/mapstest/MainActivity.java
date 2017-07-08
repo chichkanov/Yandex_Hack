@@ -1,5 +1,6 @@
 package com.chichkanov.mapstest;
 
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -38,12 +39,18 @@ public class MainActivity extends AppCompatActivity
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(NEWS_ID)
                 .withIconColorRes(R.color.dark)
                 .withTextColorRes(R.color.dark)
+                .withIcon(R.drawable.ic_news)
+                .withSelectedTextColor(Color.BLACK)
+                .withSelectedIconColor(Color.BLACK)
                 .withIconTintingEnabled(true)
                 .withName("Новости");
 
         PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(PLACES_ID)
                 .withIconColorRes(R.color.dark)
                 .withTextColorRes(R.color.dark)
+                .withIcon(R.drawable.ic_location)
+                .withSelectedTextColor(Color.BLACK)
+                .withSelectedIconColor(Color.BLACK)
                 .withIconTintingEnabled(true)
                 .withName("Места");
 
