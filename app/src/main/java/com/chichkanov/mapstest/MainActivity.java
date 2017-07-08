@@ -29,10 +29,29 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.accent));
         setSupportActionBar(toolbar);
 
-        DrawerBuilder drawerBuilder = new DrawerBuilder().withActivity(this)
+        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(NEWS_ID)
+                .withIconColorRes(R.color.dark)
+                .withTextColorRes(R.color.dark)
+                .withIconTintingEnabled(true)
+                .withName("Новости");
+
+        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(PLACES_ID)
+                .withIconColorRes(R.color.dark)
+                .withTextColorRes(R.color.dark)
+                .withIconTintingEnabled(true)
+                .withName("Места");
+
+        new DrawerBuilder()
+                .withActivity(this)
+                .withRootView(R.id.drawer_layout)
                 .withToolbar(toolbar)
+                .withDrawerWidthDp(300)
+                .withActionBarDrawerToggle(true)
+                .withActionBarDrawerToggleAnimated(true)
+                .addDrawerItems(item1, item2)
                 .withOnDrawerNavigationListener(new Drawer.OnDrawerNavigationListener() {
                     @Override
                     public boolean onNavigationClickListener(View clickedView) {
@@ -43,25 +62,10 @@ public class MainActivity extends AppCompatActivity
                         return false;
                     }
                 })
-                .withActivity(this)
                 .withOnDrawerItemClickListener(this)
-                .addDrawerItems(
-                        new PrimaryDrawerItem()
-                                .withIdentifier(NEWS_ID)
-                                .withIconColorRes(R.color.dark)
-                                .withTextColorRes(R.color.dark)
-                                .withIconTintingEnabled(true)
-                                .withName("Новости"),
-                        new PrimaryDrawerItem()
-                                .withIdentifier(PLACES_ID)
-                                .withIconColorRes(R.color.dark)
-                                .withTextColorRes(R.color.dark)
-                                .withIconTintingEnabled(true)
-                                .withName("Места")
-                );
-        drawer = drawerBuilder.build();
+                .build();
 
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             replaceFragment(new NewsFragment(), NewsFragment.class.getSimpleName(), true);
         } else {
             drawer.setSelection(savedInstanceState.getLong(DRAWER_SELECTED), false);
@@ -89,7 +93,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-        switch ((int)drawerItem.getIdentifier()) {
+        switch ((int) drawerItem.getIdentifier()) {
             case NEWS_ID:
                 replaceFragment(new NewsFragment(), NewsFragment.class.getSimpleName(), true);
                 drawer.closeDrawer();
@@ -105,19 +109,19 @@ public class MainActivity extends AppCompatActivity
 
     public void replaceFragment(Fragment fragmentToSet, String tag, boolean top) {
         FragmentManager manager = getSupportFragmentManager();
-        if(top) {
+        if (top) {
             boolean removed = manager.popBackStackImmediate();
             while (removed) {
                 removed = manager.popBackStackImmediate();
             }
         }
 
-        if(manager.findFragmentByTag(tag) == null) {
+        if (manager.findFragmentByTag(tag) == null) {
             FragmentTransaction transaction = manager.beginTransaction()
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
                     .replace(R.id.container, fragmentToSet, tag);
 
-            if(!top) {
+            if (!top) {
                 transaction.addToBackStack(null);
             }
 
@@ -132,7 +136,7 @@ public class MainActivity extends AppCompatActivity
         drawer.getActionBarDrawerToggle().setDrawerIndicatorEnabled(!hasBackStackFragments);
 
         ActionBar supportActionBar = getSupportActionBar();
-        if(supportActionBar != null) {
+        if (supportActionBar != null) {
             supportActionBar.setDisplayHomeAsUpEnabled(hasBackStackFragments);
         }
     }
