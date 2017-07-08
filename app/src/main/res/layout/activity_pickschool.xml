@@ -3,15 +3,19 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
+        android:layout_marginTop="@dimen/pick_schoool_name_height_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/pick_school_button_margin"
         android:layout_gravity="center"
+        android:src="@mipmap/ic_mblz_one_finger"
         />
     <Button
         android:id="@+id/bn_managers_school"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/pick_school_button_margin"
         android:text="@string/managment_school_name"
         />
     <Button
@@ -19,17 +23,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/pick_school_button_margin"
         android:text="@string/design_school_name"/>
     <Button
         android:id="@+id/bn_interfaces_school"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/pick_school_button_margin"
         android:text="@string/interfaces_school_name"/>
     <Button
         android:id="@+id/bn_mobile_school"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/mobile_school_name"/>
+        android:text="@string/mobile_school_name"
+        android:layout_marginBottom="@dimen/pick_schoool_name_height_margin"/>
 </LinearLayout>
