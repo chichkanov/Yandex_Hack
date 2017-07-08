@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity
     private static final int PLACES_ID = 1;
     private static final String DRAWER_SELECTED = "selected_drawer_item";
 
+    private String[] mMenuTitles;
     private Drawer drawer;
 
     @Override
@@ -31,6 +32,8 @@ public class MainActivity extends AppCompatActivity
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.accent));
         setSupportActionBar(toolbar);
+
+        mMenuTitles = getResources().getStringArray(R.array.drawer_menu_items);
 
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(NEWS_ID)
                 .withIconColorRes(R.color.dark)
@@ -96,11 +99,13 @@ public class MainActivity extends AppCompatActivity
         switch ((int) drawerItem.getIdentifier()) {
             case NEWS_ID:
                 replaceFragment(new NewsFragment(), NewsFragment.class.getSimpleName(), true);
+                setTitle(mMenuTitles[position]);
                 drawer.closeDrawer();
                 return true;
 
             case PLACES_ID:
                 replaceFragment(new MapsFragment(), MapsFragment.class.getSimpleName(), true);
+                setTitle(mMenuTitles[position]);
                 drawer.closeDrawer();
                 return true;
         }
