@@ -36,6 +36,7 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name=".PickSchoolNameActivity"
+            android:theme="@style/SplashTheme"
             android:screenOrientation="portrait"/>
 
 

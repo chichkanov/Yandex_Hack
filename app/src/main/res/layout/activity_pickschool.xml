@@ -1,42 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/splash">
+
     <ImageView
-        android:layout_marginTop="@dimen/pick_schoool_name_height_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/pick_school_button_margin"
         android:layout_gravity="center"
-        android:src="@mipmap/ic_mblz_one_finger"
+        android:src="@drawable/splash"
         />
     <Button
         android:id="@+id/bn_managers_school"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="@dimen/pick_school_button_margin"
         android:text="@string/managment_school_name"
-        />
+        android:background="@color/colorPrimary"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:textColor="@android:color/black"/>
     <Button
         android:id="@+id/bn_design_school"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="@dimen/pick_school_button_margin"
-        android:text="@string/design_school_name"/>
+        android:text="@string/design_school_name"
+        android:background="@color/colorPrimary"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:textColor="@android:color/black"/>
     <Button
         android:id="@+id/bn_interfaces_school"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="@dimen/pick_school_button_margin"
-        android:text="@string/interfaces_school_name"/>
+        android:text="@string/interfaces_school_name"
+        android:background="@color/colorPrimary"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:textColor="@android:color/black"/>
     <Button
         android:id="@+id/bn_mobile_school"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/mobile_school_name"
-        android:layout_marginBottom="@dimen/pick_schoool_name_height_margin"/>
+        android:background="@color/colorPrimary"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:textColor="@android:color/black"/>
 </LinearLayout>
