@@ -1,9 +1,11 @@
 package com.chichkanov.mapstest;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,8 +31,8 @@ public class NewsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_news, container, false);
-
-        Collection<Subject> subjects = Storage.getInstance(getContext()).getNearestSchedule("shmd");
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(getString(R.string.shared_preferences_name), 0);
+        Collection<Subject> subjects = Storage.getInstance(getContext()).getNearestSchedule(sharedPreferences.getString(getString(R.string.pref_school_name), getString(R.string.pref_default_school)));
         Iterator<Subject> iterator = subjects.iterator();
         if(iterator.hasNext()) {
             initRasp(layout, iterator.next());
@@ -43,7 +45,6 @@ public class NewsFragment extends Fragment {
 
     private void initRasp(View layout, Subject subject){
         SimpleDateFormat format = new SimpleDateFormat("dd MMM - hh:mm");
-
         ((TextView) layout.findViewById(R.id.rasp_tv_name)).setText(subject.getTitle());
         ((TextView) layout.findViewById(R.id.rasp_tv_time)).setText(format.format(subject.getTime().getTime()));
         ((TextView) layout.findViewById(R.id.rasp_tv_duration)).setText(String.valueOf(subject.getDuration()) + " часа");
